@@ -6,13 +6,13 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const dataset: Omit<Parent, "id">[] = [];
 
-  const files = fs.readdirSync("./public/static");
+  const files = fs.readdirSync("./public/dataset");
 
   files.forEach((file) => {
-    const images = fs.readdirSync(`./public/static/${file}`);
+    const images = fs.readdirSync(`./public/dataset/${file}`);
     dataset.push({
       name: faker.person.fullName(),
-      images: images.map((image) => `/static/${file}/${image}`),
+      images: images.map((image) => `/dataset/${file}/${image}`),
       phone: file.split(" - ")[1].replace(/[^\d]/g, ""),
     });
   });
