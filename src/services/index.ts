@@ -60,7 +60,7 @@ export async function getModel(parentId: string) {
 
   const descriptors = await Promise.all(
     parent.images.map(async (image) => {
-      const img = await faceapi.fetchImage(image.replace("dataset", "static"));
+      const img = await faceapi.fetchImage(image);
       const detections = await faceapi
         .detectSingleFace(img)
         .withFaceLandmarks()
