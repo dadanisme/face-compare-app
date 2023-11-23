@@ -37,9 +37,7 @@ export const useParents = () => {
           id: doc.id,
           name: doc.data().name,
           studentId: doc.data().studentId,
-          images: doc
-            .data()
-            .images.map((image: string) => image.replace("dataset", "static")),
+          images: doc.data().images,
           phone: doc.data().phone,
         } as Parent;
       });
@@ -62,7 +60,7 @@ export async function getModel(parentId: string) {
 
   const descriptors = await Promise.all(
     parent.images.map(async (image) => {
-      const img = await faceapi.fetchImage(image);
+      const img = await faceapi.fetchImage(image.replace("dataset", "static"));
       const detections = await faceapi
         .detectSingleFace(img)
         .withFaceLandmarks()
