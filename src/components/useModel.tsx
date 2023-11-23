@@ -6,6 +6,7 @@ import * as faceapi from "face-api.js";
 export default function useModel(id: string) {
   const [model, setModel] = useState<faceapi.LabeledFaceDescriptors[]>();
   const [loading, setLoading] = useState(true);
+  const [loadingModel, setLoadingModel] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -15,11 +16,15 @@ export default function useModel(id: string) {
       faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
     ]).then(() => setLoading(false));
 
+    if (loading) return;
+    setLoadingModel(true);
     getModel(id).then((model) => {
-      if (model) setModel(model);
-      else setError(true);
+      if (model) {
+        setModel(model);
+        setLoadingModel(false);
+      } else setError(true);
     });
-  }, []);
+  }, [loading, id]);
 
-  return { model, loading, error };
+  return { model, loading: loadingModel, error };
 }
