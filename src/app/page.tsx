@@ -17,6 +17,7 @@ export default function Home() {
   const [filteredStudents, setFilteredStudents] = useState(students);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<Student>();
+  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
     setFilteredStudents(students);
@@ -81,18 +82,16 @@ export default function Home() {
     },
   ];
 
-  useEffect(() => {
-    // (async () => {
-    //   const res = await fetch("/api/dataset");
-    //   const data = (await res.json()) as Parent[];
-    //   const ref = collection(db, "parents");
-    //   Promise.all(data.map((parent) => addDoc(ref, parent))).then(() =>
-    //     console.log("done")
-    //   );
-    // })();
+  const doSomething = async () => {
+    // const res = await fetch("/api/dataset");
+    // const data = (await res.json()) as Parent[];
+    // const ref = collection(db, "parents");
+    // Promise.all(data.map((parent) => addDoc(ref, parent))).then(() =>
+    //   console.log("done")
+    // );
     // if (parents.length === 0) return;
     // const ref = collection(db, "students");
-    // const fakeStudents = Array.from({ length: 30 }, () => ({
+    // const fakeStudents = Array.from({ length: 100 }, () => ({
     //   name: faker.person.fullName(),
     //   class: faker.person.jobTitle(),
     //   parentId: parents[Math.floor(Math.random() * parents.length)].id,
@@ -100,10 +99,13 @@ export default function Home() {
     // Promise.all(fakeStudents.map((student) => addDoc(ref, student))).then(() =>
     //   console.log("done")
     // );
-  }, []);
+  };
+
+  useEffect(() => {}, []);
 
   return (
     <div className="p-28">
+      {/* <Button onClick={doSomething}>Do Something</Button> */}
       <Modal.Legacy
         open={modalOpen}
         onClickBackdrop={() => setModalOpen(false)}
