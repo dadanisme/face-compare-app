@@ -66,7 +66,7 @@ export async function getModel(parentId: string) {
         .withFaceLandmarks()
         .withFaceDescriptor();
 
-      return detections!.descriptor;
+      return detections?.descriptor ?? new Float32Array();
     })
   );
 

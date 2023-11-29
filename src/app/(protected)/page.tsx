@@ -17,7 +17,6 @@ export default function Home() {
   const [filteredStudents, setFilteredStudents] = useState(students);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<Student>();
-  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
     setFilteredStudents(students);
@@ -105,7 +104,6 @@ export default function Home() {
 
   return (
     <div className="p-28">
-      {/* <Button onClick={doSomething}>Do Something</Button> */}
       <Modal.Legacy
         open={modalOpen}
         onClickBackdrop={() => setModalOpen(false)}
