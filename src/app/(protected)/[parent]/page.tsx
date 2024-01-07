@@ -37,7 +37,7 @@ export default function Page({ params }: Props) {
   if (students.length > 0 && !studentData) return notFound();
 
   const message = `Yth. Bapak/Ibu ${parentData?.name}, anak Anda *${studentData?.name}* akan dijemput oleh orang yang tidak dikenal. Izinkan? (Y/N)`;
-  const successMessage = `Yth. Bapak/Ibu ${parentData?.name}, anak Anda *${studentData?.name}* telah dijemput!`;
+  const successMessage = `Yth. Bapak/Ibu ${parentData?.name}, anak Anda *${studentData?.name}* telah dijemput`;
 
   if (error) return notFound();
 
