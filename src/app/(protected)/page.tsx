@@ -131,11 +131,11 @@ export default function Home() {
                 const filtered = students.filter(
                   (student) =>
                     student.name
-                      .toLowerCase()
+                      ?.toLowerCase()
                       .includes(e.target.value.toLowerCase()) ||
                     parents
                       .find((p) => p.id === student.parentId)
-                      ?.name.toLowerCase()
+                      ?.name?.toLowerCase()
                       .includes(e.target.value.toLowerCase())
                 );
                 setFilteredStudents(filtered);
